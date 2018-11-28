@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+// $.ajax({  //添加和修改商品
+//     type: 'POST',
+//     url: 'http://localhost:9008/seller/product/save',
+//     data: {
+//         productId:1,
+//         productName:'$$$$$',
+//         productPrice:'34',
+//         productDescription:'34',
+//         productIcon:'er',
+//         sellerPhone:324,
+//         categoryType:4
+//       },
+//     success: function(data) {
+//         console.log(data);
+//     }
+// })
+// $.ajax({ //通过id查询商品
+//     type: 'get',
+//     url: 'http://localhost:9008/seller/product/list/3',
+//     dataType:'json',
+//     success: function(data) {
+//         console.log('dsuccess', data);
+//     },
+//     error: function(error){
+//         console.log("eerror", error);
+//     }
+// })
+
+// $.ajax({  //商品下架
+//     type: 'POST',
+//     url: 'http://localhost:9008/seller/product/offSale/3',
+//     data: {
+//          productStatus:1
+
+//       },
+//     success: function(data) {
+//         console.log(data);
+//     }
+// })
+
+// $.ajax({  //商品上架
+//     type: 'POST',
+//     url: 'http://localhost:9008/seller/product/onSale/3',
+//     data: {
+//          productStatus:0
+
+//       },
+//     success: function(data) {
+//         console.log(data);
+//     }
+// })
+
+// $.ajax({ //分页查询
+//     type: 'get',
+//     url: 'http://localhost:9008/seller/product/list',
+//     data: {
+//         page:2,
+//         size:4
+//     },
+//     success: function(data) {
+//         console.log('dsuccess', data);
+//     },
+//     error: function(error){
+//         console.log("eerror", error);
+//     }
+// })
+
+
+//  $.ajax({ //通过订单ID查询某订单
+//     type: 'get',
+//     url: 'http://localhost:9008/seller/order/detail/2',
+//     success: function(data) {
+//         console.log('dsuccess', data);
+//     },
+//     error: function(error){
+//         console.log("eerror", error);
+//     }
+// })
+
+
+
+//  $.ajax({ //订单概要分页查询
+//     type: 'get',
+//     url: 'http://localhost:9008/seller/order/list',
+//     data:{
+//         page:2,
+//         size:4
+//     },
+//     success: function(data) {
+//         console.log('dsuccess', data);
+//     },
+//     error: function(error){
+//         console.log("eerror", error);
+//     }
+// })
+
+//  $.ajax({ //接单
+//     type: 'post',
+//     url: 'http://localhost:9008/seller/order/finish/3',
+//     success: function(data) {
+//         console.log('dsuccess', data);
+//     },
+//     error: function(error){
+//         console.log("eerror", error);
+//     }
+// })
+
+//  $.ajax({ //取消订单
+//     type: 'post',
+//     url: 'http://localhost:9008/seller/order/cancel/4',
+//     success: function(data) {
+//         console.log('dsuccess', data);
+//     },
+//     error: function(error){
+//         console.log("eerror", error);
+//     }
+// })
+$.ajax({
+          url: 'http://localhost:9008/admin/register',
+          type: 'post',
+          data:{
+               userName: 1221, 
+               passWord: 1111,
+               invitationCode: 123456
+
+          },
+          success: function (data) {
+              console.log("-----------------data", data);
+          },
+          error: function (error) {
+              console.log('Error: ' + error);
+          }
+})
+</script>
+</html>
