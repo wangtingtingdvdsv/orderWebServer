@@ -1,8 +1,8 @@
 module.exports = {
-    host: '123.207.239.126',
+    host: '120.79.192.19',
     user:'root',
  
-    password:'612501',
+    password:'',
     database: 'order_applet'
 }
 // module.exports = {
