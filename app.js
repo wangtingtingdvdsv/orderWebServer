@@ -31,7 +31,7 @@ app.use(product.routes()).use(product.allowedMethods());
 app.use(order.routes()).use(order.allowedMethods());
 
 
-app.listen(9008, function() {
+app.listen(3004, function() {
   console.log('启动成功');
 });
 
