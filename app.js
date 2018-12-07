@@ -5,6 +5,7 @@ const category = require('./interface/seller/category');
 const product = require('./interface/seller/product');
 const order = require('./interface/seller/order');
 const admin = require('./interface/admin/admin');
+const comment = require('./interface/seller/comment');
 const session=require('koa-session');
 const convert = require('koa-convert');
   
@@ -29,10 +30,10 @@ app.use(admin.routes()).use(admin.allowedMethods());
 app.use(category.routes()).use(category.allowedMethods());
 app.use(product.routes()).use(product.allowedMethods());
 app.use(order.routes()).use(order.allowedMethods());
-
+app.use(comment.routes()).use(comment.allowedMethods());
 
 app.listen(3004, function() {
-  console.log('启动成功');
+  console.log('启动成功 3004');
 });
 
 

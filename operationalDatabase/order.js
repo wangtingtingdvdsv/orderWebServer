@@ -5,7 +5,7 @@ connection.connect();
 
 const cancelOrder = (ctx, next) => {//取消订单
     let orderId = ctx.params.orderId;
-    sql = `UPDATE ordersummary SET order_status=2
+    sql = `UPDATE orderSummary SET order_status=2
     WHERE order_id=${orderId}`;
     connection.query(sql,function (err, result) {
         if(err){
@@ -24,7 +24,7 @@ const cancelOrder = (ctx, next) => {//取消订单
 
 const finishOrder = (ctx, next) => {//接单
     let orderId = ctx.params.orderId;
-    sql = `UPDATE ordersummary SET order_status=1
+    sql = `UPDATE orderSummary SET order_status=1
     WHERE order_id=${orderId}`;
     connection.query(sql,function (err, result) {
         if(err){
@@ -42,16 +42,13 @@ const finishOrder = (ctx, next) => {//接单
 } 
 
 const orderPageQuery = async (ctx, next) => { //订单概要分页查询
-    var {page, size} = ctx.request.query;
-    var data = await getProductByPageAndSize(page, size);
-
+    var data = await getProductByPageAndSize();
+    //console.log("request", data);
     ctx.status = 200;
     ctx.body = {
         code: 0,
         msg: "请求成功",
-        data:{
-            data
-        }
+        data:data
     };
 } 
 
@@ -72,9 +69,9 @@ const searchOrderById = async (ctx, next) => { //通过订单ID查询某订单
     };
 }
 
-function getProductByPageAndSize(page, size) {
-    var start = (page-1) * size;
-    var  sql = `SELECT * from ordersummary LIMIT ${start}, ${size}`; //从start+1条到第end条， 一共size条。
+function getProductByPageAndSize() {
+    var  sql = `SELECT * from orderSummary`; //从start+1条到第end条， 一共size条。
+    console.log('sql', sql);
     return new Promise((resolve, reject) => {
         connection.query(sql, ( err, result) => {
             if ( err ) {
@@ -102,7 +99,7 @@ function  getOrderDetailListByOrderId(order) {
 }
 
 function getOrderById(orderId) {
-    var  sql = `SELECT * from ordersummary WHERE order_id=${orderId}`;
+    var  sql = `SELECT * from orderSummary WHERE order_id=${orderId}`;
     return new Promise((resolve, reject) => {
         connection.query(sql, ( err, result) => {
             if ( err ) {

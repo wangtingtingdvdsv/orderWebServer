@@ -119,10 +119,8 @@ const productOnSale = (ctx, next) => { //商品上架
     };
 }
 
-function getProductByPageAndSize(page, size) {
-
-    var start = (page-1) * size;
-    var  sql = `SELECT * from dishes LIMIT ${start}, ${size}`; //从start+1条开始的size条（下标从0开始的）
+function getProductByPageAndSize() {
+    var  sql = `SELECT * from product`; 
     return new Promise((resolve, reject) => {
         connection.query(sql, ( err, result) => {
             if ( err ) {
@@ -135,23 +133,14 @@ function getProductByPageAndSize(page, size) {
 }
 
 const productPagingQuery = async (ctx, next) => { //分页查询
-    if (!ctx.session.user) {
-        console.log('你需要登录');
-        ctx.response.redirect('/login');
-      } else{
-        console.log("登录成功：",ctx.session.user);
-      }
-      console.log("#####@@@@%%%%%%%%%%%%%", ctx.session);
-    var {page, size} = ctx.request.query;   //通过query获取get方式中data里面的数据，通过body获取post方式中data里面的数据
-    var data = await getProductByPageAndSize(page, size);
+  //通过query获取get方式中data里面的数据，通过body获取post方式中data里面的数据
+    var data = await getProductByPageAndSize();
      
      ctx.status = 200;
      ctx.body = {
          code: 0,
          msg: "请求成功",
-         data:{
-             data
-         }
+         data:data
      };
 }
 

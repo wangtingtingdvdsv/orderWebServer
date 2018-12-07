@@ -5,7 +5,7 @@ connection.connect();
 
 function queryUserIfExist(data) {
     console.log("data:", data);
-    var  sql = `SELECT * from admintable WHERE admin_name='${data.userName}' AND admin_pass='${data.passWord}'`;
+    var  sql = `SELECT * from admin WHERE admin_name='${data.userName}' AND admin_pass='${data.passWord}'`;
     return new Promise((resolve, reject) => {
         connection.query(sql, ( err, result) => {
             if ( err ) {
@@ -41,7 +41,7 @@ const login = async (ctx, next) => { //登录验证
 }
 const register = (ctx, next) => { //新增管理员
     var data = ctx.request.body;
-    var sql = `INSERT INTO admintable( admin_name, admin_pass) values ('${data.userName}', '${data.passWord}')`;
+    var sql = `INSERT INTO admin( admin_name, admin_pass) values ('${data.userName}', '${data.passWord}')`;
     var invitationCode = 123456;
     if(data.invitationCode != invitationCode) {
         ctx.status = 200;

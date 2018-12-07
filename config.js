@@ -3,7 +3,8 @@ module.exports = {
     user:'root',
  
     password:'',
-    database: 'order_applet'
+    database: 'order_applet',
+    useConnectionPooling: true
 }
 // module.exports = {
 //     host: 'localhost',
