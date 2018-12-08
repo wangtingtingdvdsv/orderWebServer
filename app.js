@@ -36,8 +36,8 @@ app.use(product.routes()).use(product.allowedMethods());
 app.use(order.routes()).use(order.allowedMethods());
 app.use(comment.routes()).use(comment.allowedMethods());
 
-app.listen(3004, function() {
-  console.log('启动成功 3004');
+app.listen(3007, function() {
+  console.log('启动成功 3007');
 });
 
 
