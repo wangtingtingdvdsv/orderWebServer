@@ -1,12 +1,13 @@
 const mysql = require('mysql');
 const config = require('../config');
 var connection = mysql.createConnection(config);
-connection.connect();
+
 
 const cancelOrder = (ctx, next) => {//取消订单
     let orderId = ctx.params.orderId;
     sql = `UPDATE orderSummary SET order_status=2
     WHERE order_id=${orderId}`;
+   
     connection.query(sql,function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);
@@ -14,6 +15,7 @@ const cancelOrder = (ctx, next) => {//取消订单
         }
        
     })
+   
     ctx.status = 200;
     ctx.body = {
         code: 0,
@@ -26,6 +28,7 @@ const finishOrder = (ctx, next) => {//接单
     let orderId = ctx.params.orderId;
     sql = `UPDATE orderSummary SET order_status=1
     WHERE order_id=${orderId}`;
+   
     connection.query(sql,function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);
@@ -33,6 +36,7 @@ const finishOrder = (ctx, next) => {//接单
         }
        
     })
+    
     ctx.status = 200;
     ctx.body = {
         code: 0,
@@ -73,6 +77,7 @@ function getProductByPageAndSize() {
     var  sql = `SELECT * from orderSummary`; //从start+1条到第end条， 一共size条。
     console.log('sql', sql);
     return new Promise((resolve, reject) => {
+       
         connection.query(sql, ( err, result) => {
             if ( err ) {
               reject( err )
@@ -80,6 +85,7 @@ function getProductByPageAndSize() {
               resolve( result )
             }
         })    
+        
     })
 }
 
@@ -87,6 +93,7 @@ function  getOrderDetailListByOrderId(order) {
         var  sql = `SELECT * from orderdetails WHERE order_id=${order[0].order_id}`;
         order[0].orderDetailList = [];
         return new Promise((resolve, reject) => {
+           
             connection.query(sql, ( err, orderDetailList) => {
                 if ( err ) {
                     reject( err )
@@ -95,12 +102,14 @@ function  getOrderDetailListByOrderId(order) {
                    resolve(order);
                 }
             })  
+            
         })
 }
 
 function getOrderById(orderId) {
     var  sql = `SELECT * from orderSummary WHERE order_id=${orderId}`;
     return new Promise((resolve, reject) => {
+       
         connection.query(sql, ( err, result) => {
             if ( err ) {
                 console.log("+++++++++++");
@@ -109,6 +118,7 @@ function getOrderById(orderId) {
               resolve( result )
             }
         })    
+        
     })
 }
 

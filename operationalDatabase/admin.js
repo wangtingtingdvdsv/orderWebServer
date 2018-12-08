@@ -1,19 +1,21 @@
 const mysql = require('mysql');
 const config = require('../config');
 var connection = mysql.createConnection(config);
-connection.connect();
+
 
 function queryUserIfExist(data) {
     console.log("data:", data);
     var  sql = `SELECT * from admin WHERE admin_name='${data.userName}' AND admin_pass='${data.passWord}'`;
     return new Promise((resolve, reject) => {
+       
         connection.query(sql, ( err, result) => {
             if ( err ) {
               reject( err )
             } else {
               resolve( result )
             }
-        })    
+        })  
+          
     })
 }
 
@@ -52,13 +54,14 @@ const register = (ctx, next) => { //新增管理员
         }
         return;
     }
+    
     connection.query(sql,function (err, result) {
         if(err){
         console.log('[SELECT ERROR] - ',err.message);
         return;
         }
-    
     })
+   
 
     ctx.status = 200;
     ctx.body = {
@@ -67,6 +70,7 @@ const register = (ctx, next) => { //新增管理员
         data: null
     }
 } 
+connection.end();
 module.exports = {
     logout,
     login,

@@ -1,13 +1,14 @@
 const mysql = require('mysql');
 const config = require('../config');
 var connection = mysql.createConnection(config);
-connection.connect();
+
 
 
 
 function getComment() {
     var  sql = `SELECT * from comment_table`;
     return new Promise((resolve, reject) => {
+       
         connection.query(sql, ( err, result) => {
             if ( err ) {
               reject( err )
@@ -15,6 +16,7 @@ function getComment() {
               resolve( result )
             }
         })    
+        
     })
 }
 
