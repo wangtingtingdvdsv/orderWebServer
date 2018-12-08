@@ -1,8 +1,19 @@
 const mysql = require('mysql');
 const config = require('../config');
+
+
 var connection = mysql.createConnection(config);
 connection.connect();
-
+const addProductPic = (ctx, next) => {
+    console.log("1", ctx.request.body);
+    console.log("2", ctx.query);
+    ctx.status = 200;
+    ctx.body = {
+        code: 0,
+        msg: "请求成功",
+        data: null
+    }
+}
 function getProductById(id) {
     var  sql = `SELECT * from dishes WHERE product_id=${id}`;
     return new Promise((resolve, reject) => {
@@ -32,7 +43,7 @@ const changeProductInfo = (ctx, next) => {
             }
         })
     } else { //新增类目
-        sql = `INSERT INTO dishes(product_name, product_price, product_description, seller_phone, product_icon, category_type) values ('${data.productName}', '${data.productPrice}', '${data.productDescription}', '${data.sellerPhone}', '${data.productIcon}', '${data.categoryType}')`;
+        sql = `INSERT INTO product(product_name, product_price, product_description, seller_phone, product_icon, category_type) values ('${data.name}', '${data.price}', '${data.description}', '${data.phone}', '${data.picUrl}', '${data.category}')`;
         connection.query(sql,function (err, result) {
             if(err){
               console.log('[SELECT ERROR] - ',err.message);
@@ -145,6 +156,7 @@ const productPagingQuery = async (ctx, next) => { //分页查询
 }
 
 module.exports = {
+    addProductPic,
     changeProductInfo,
     searchProductById,
     productOffSale,

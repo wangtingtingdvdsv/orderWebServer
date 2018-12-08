@@ -8,6 +8,9 @@ const admin = require('./interface/admin/admin');
 const comment = require('./interface/seller/comment');
 const session=require('koa-session');
 const convert = require('koa-convert');
+// var multer = require('multer')
+// const upload = multer({ dest: 'uploads/' });
+
   
 const app = new Koa();
 app.keys = ['this is my secret and fuck you all'];
@@ -17,6 +20,7 @@ app.use(cors({
   credentials: true,
   maxAge: '1728000'
 }))
+// app.use(upload.single('file'));
 app.use(koaBody());
 app.use(convert(session({
   key: 'loginAuthentication', /** cookie的名称，可以不管 */
