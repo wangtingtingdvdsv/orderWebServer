@@ -16,7 +16,7 @@ const convert = require('koa-convert');
 const app = new Koa();
 app.keys = ['this is my secret and fuck you all'];
 
-router.all('*', async (ctx, next) => {
+app.all('*', async (ctx, next) => {
 
   ctx.set("Access-Control-Allow-Origin", "*")
   ctx.set("Access-Control-Allow-Headers", "X-Requested-With")

@@ -2,6 +2,9 @@ const mysql = require('mysql');
 const config = require('../config');
 var connection = mysql.createConnection(config);
 
+setInterval(function () {
+    connection.query('SELECT 1');
+}, 5000);
 
 function queryUserIfExist(data) {
     console.log("data:", data);
