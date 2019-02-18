@@ -16,7 +16,6 @@ module.exports = {
     production : {
       user : 'root',
       host : '120.79.192.19',
-      port: '5999',
       ref  : 'origin/master',
       repo : 'git@github.com:wangtingtingdvdsv/orderWebServer.git',
       path : '/wangtingting/project/test',
