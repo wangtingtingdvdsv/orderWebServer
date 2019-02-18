@@ -19,7 +19,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'git@github.com:wangtingtingdvdsv/orderWebServer.git',
       path : '/wangtingting/project/test',
-      'post-deploy' : 'cnpm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     }
   }
 };
