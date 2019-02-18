@@ -73,7 +73,7 @@ const register = (ctx, next) => { //新增管理员
         data: null
     }
 } 
-connection.end();
+
 module.exports = {
     logout,
     login,
