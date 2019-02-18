@@ -23,7 +23,7 @@ module.exports = {
       host : '120.79.192.19',
       ref  : 'origin/master',
       repo : 'git@github.com:wangtingtingdvdsv/orderWebServer.git',
-      path : '/wangtingting/project/test',
+      path : '/wangtingting/project/orderWebServer',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     }
   }
