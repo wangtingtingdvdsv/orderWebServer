@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: 'API',
+    name: '111',
     script: 'orderWebServer.js',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
@@ -16,6 +16,7 @@ module.exports = {
     production : {
       user : 'root',
       host : '120.79.192.19',
+      port: '5999',
       ref  : 'origin/master',
       repo : 'git@github.com:wangtingtingdvdsv/orderWebServer.git',
       path : '/wangtingting/project/test',
