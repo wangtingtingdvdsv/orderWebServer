@@ -1,0 +1,25 @@
+module.exports = {
+  apps : [{
+    name: 'API',
+    script: 'orderWebServer.js',
+
+    // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
+    env: {
+      NODE_ENV: 'development'
+    },
+    env_production: {
+      NODE_ENV: 'production'
+    }
+  }],
+
+  deploy : {
+    production : {
+      user : 'root',
+      host : '120.79.192.19',
+      ref  : 'origin/master',
+      repo : 'git@github.com:wangtingtingdvdsv/orderWebServer.git',
+      path : '/wangtingting/project/test',
+      'post-deploy' : 'cnpm install && pm2 reload ecosystem.config.js --env production'
+    }
+  }
+};
